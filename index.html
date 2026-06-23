@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GRE 核心词汇一本通 学生版</title>
+  <style>
+:root{--cream:#f7f4ed;--paper:#fffdf8;--ink:#1c1c1c;--muted:#706b61;--line:#ece7dc;--line-strong:#ddd4c7;--green:#245d52;--gold:#b8893f;--wash:#f1e7d9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:0}
+a{color:inherit;text-decoration:none}
+.shell{width:min(1180px,calc(100% - 44px));margin:auto;padding:28px 0 72px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:end;min-height:230px;border:1px solid var(--line);border-radius:18px;padding:30px;background:radial-gradient(circle at 18% 0%,rgba(184,137,63,.2),transparent 34%),radial-gradient(circle at 85% 20%,rgba(36,93,82,.14),transparent 34%),var(--paper)}
+.eyebrow{margin:0 0 10px;color:var(--green);font-size:13px;font-weight:720;letter-spacing:.08em;text-transform:uppercase}
+h1{margin:0;font-size:48px;line-height:1.02;font-weight:720;letter-spacing:-1.2px}
+.lead{max-width:680px;margin:14px 0 0;color:var(--muted);font-size:16px}
+.hero-panel{display:grid;gap:10px;justify-self:end;width:min(360px,100%)}
+.hero-stat{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted)}
+.hero-stat strong{color:var(--ink);font-size:22px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:28px 0 14px}
+h2{margin:0;font-size:24px;letter-spacing:-.35px}
+.hint{margin:0;color:var(--muted);font-size:14px}
+.unit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.unit-card{position:relative;display:grid;gap:13px;min-height:176px;border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:18px;transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.unit-card:hover{transform:translateY(-2px);border-color:var(--line-strong);background:#fffaf0}
+.unit-kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px}
+.unit-number{font-family:Georgia,"Times New Roman",serif;font-size:34px;line-height:1;color:var(--green);font-weight:700;letter-spacing:-.7px}
+.unit-name{display:grid;gap:2px}
+.unit-name strong{font-size:20px;letter-spacing:-.25px}
+.unit-name span{color:var(--muted);font-size:13px}
+.path{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:4px 8px;background:#fbf8f0;color:var(--muted);font-size:12px}
+.pill.ready{border-color:rgba(36,93,82,.28);color:var(--green);background:rgba(36,93,82,.06)}
+.pill.missing{color:#aaa;background:#f7f4ed}
+.meta{color:var(--muted);font-size:13px}
+.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(247,244,237,.92);backdrop-filter:blur(16px)}
+.topbar-inner{width:min(1180px,calc(100% - 44px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:52px}
+.brand{font-weight:720;letter-spacing:-.25px}
+.nav-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:34px;border:1px solid var(--line-strong);border-radius:8px;padding:6px 11px;background:transparent;color:var(--ink);font-size:13px}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.unit-hero{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;border:1px solid var(--line);border-radius:18px;background:radial-gradient(circle at 12% 0%,rgba(184,137,63,.18),transparent 34%),var(--paper);padding:28px;margin-top:24px}
+.unit-hero h1{font-size:42px}
+.lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.lesson-card{display:grid;gap:10px;border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:18px;min-height:180px}
+.lesson-card.disabled{opacity:.55}
+.lesson-card h2{font-size:22px}
+.lesson-card p{margin:0;color:var(--muted);font-size:14px}
+.lesson-card .btn{width:max-content;margin-top:auto}
+.small-link{color:var(--green);font-weight:650}
+@media(max-width:800px){.shell{width:min(100% - 28px,1180px);padding-top:18px}.hero,.unit-hero{grid-template-columns:1fr;padding:22px}.hero-panel{justify-self:stretch}h1{font-size:38px}.lesson-grid{grid-template-columns:1fr}.topbar-inner{width:min(100% - 28px,1180px);align-items:flex-start;flex-direction:column;padding:10px 0}.nav-actions{width:100%}.btn{flex:1}}
+</style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">GRE Core Vocabulary</p>
+        <h1>GRE 核心词汇一本通</h1>
+        <p class="lead">按单元完成精讲学习、单元刷题和熟悉度考察。整套目录可直接发给学生，也可以单独发送任一单元文件夹。</p>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-stat"><span>学习单元</span><strong>30</strong></div>
+        <div class="hero-stat"><span>核心词条</span><strong>2900</strong></div>
+        <div class="hero-stat"><span>默认练习</span><strong>50 / 单元</strong></div>
+      </div>
+    </section>
+    <div class="section-head">
+      <div><h2>单元学习路径</h2><p class="hint">先学词，再刷题；有考察页的单元可继续做熟悉度检查。</p></div>
+    </div>
+    <section class="unit-grid"><a class="unit-card" href="unit_01/index.html">
+  <div class="unit-kicker"><span>第 01 单元</span><span>98 词</span></div>
+  <div class="unit-name"><span class="unit-number">01</span><strong>Unit 01</strong><span>推荐 50 题 · 全部题目 327</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_02/index.html">
+  <div class="unit-kicker"><span>第 02 单元</span><span>103 词</span></div>
+  <div class="unit-name"><span class="unit-number">02</span><strong>Unit 02</strong><span>推荐 50 题 · 全部题目 261</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_03/index.html">
+  <div class="unit-kicker"><span>第 03 单元</span><span>99 词</span></div>
+  <div class="unit-name"><span class="unit-number">03</span><strong>Unit 03</strong><span>推荐 50 题 · 全部题目 361</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_04/index.html">
+  <div class="unit-kicker"><span>第 04 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">04</span><strong>Unit 04</strong><span>推荐 50 题 · 全部题目 258</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_05/index.html">
+  <div class="unit-kicker"><span>第 05 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">05</span><strong>Unit 05</strong><span>推荐 50 题 · 全部题目 284</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_06/index.html">
+  <div class="unit-kicker"><span>第 06 单元</span><span>97 词</span></div>
+  <div class="unit-name"><span class="unit-number">06</span><strong>Unit 06</strong><span>推荐 50 题 · 全部题目 301</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_07/index.html">
+  <div class="unit-kicker"><span>第 07 单元</span><span>99 词</span></div>
+  <div class="unit-name"><span class="unit-number">07</span><strong>Unit 07</strong><span>推荐 50 题 · 全部题目 320</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_08/index.html">
+  <div class="unit-kicker"><span>第 08 单元</span><span>99 词</span></div>
+  <div class="unit-name"><span class="unit-number">08</span><strong>Unit 08</strong><span>推荐 50 题 · 全部题目 327</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_09/index.html">
+  <div class="unit-kicker"><span>第 09 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">09</span><strong>Unit 09</strong><span>推荐 50 题 · 全部题目 331</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_10/index.html">
+  <div class="unit-kicker"><span>第 10 单元</span><span>99 词</span></div>
+  <div class="unit-name"><span class="unit-number">10</span><strong>Unit 10</strong><span>推荐 50 题 · 全部题目 314</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_11/index.html">
+  <div class="unit-kicker"><span>第 11 单元</span><span>102 词</span></div>
+  <div class="unit-name"><span class="unit-number">11</span><strong>Unit 11</strong><span>推荐 50 题 · 全部题目 394</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_12/index.html">
+  <div class="unit-kicker"><span>第 12 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">12</span><strong>Unit 12</strong><span>推荐 50 题 · 全部题目 258</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_13/index.html">
+  <div class="unit-kicker"><span>第 13 单元</span><span>102 词</span></div>
+  <div class="unit-name"><span class="unit-number">13</span><strong>Unit 13</strong><span>推荐 50 题 · 全部题目 254</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_14/index.html">
+  <div class="unit-kicker"><span>第 14 单元</span><span>99 词</span></div>
+  <div class="unit-name"><span class="unit-number">14</span><strong>Unit 14</strong><span>推荐 50 题 · 全部题目 262</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_15/index.html">
+  <div class="unit-kicker"><span>第 15 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">15</span><strong>Unit 15</strong><span>推荐 50 题 · 全部题目 357</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_16/index.html">
+  <div class="unit-kicker"><span>第 16 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">16</span><strong>Unit 16</strong><span>推荐 50 题 · 全部题目 279</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_17/index.html">
+  <div class="unit-kicker"><span>第 17 单元</span><span>99 词</span></div>
+  <div class="unit-name"><span class="unit-number">17</span><strong>Unit 17</strong><span>推荐 50 题 · 全部题目 287</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_18/index.html">
+  <div class="unit-kicker"><span>第 18 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">18</span><strong>Unit 18</strong><span>推荐 50 题 · 全部题目 329</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_19/index.html">
+  <div class="unit-kicker"><span>第 19 单元</span><span>98 词</span></div>
+  <div class="unit-name"><span class="unit-number">19</span><strong>Unit 19</strong><span>推荐 50 题 · 全部题目 294</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_20/index.html">
+  <div class="unit-kicker"><span>第 20 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">20</span><strong>Unit 20</strong><span>推荐 50 题 · 全部题目 318</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_21/index.html">
+  <div class="unit-kicker"><span>第 21 单元</span><span>98 词</span></div>
+  <div class="unit-name"><span class="unit-number">21</span><strong>Unit 21</strong><span>推荐 50 题 · 全部题目 365</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_22/index.html">
+  <div class="unit-kicker"><span>第 22 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">22</span><strong>Unit 22</strong><span>推荐 50 题 · 全部题目 280</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_23/index.html">
+  <div class="unit-kicker"><span>第 23 单元</span><span>113 词</span></div>
+  <div class="unit-name"><span class="unit-number">23</span><strong>Unit 23</strong><span>推荐 50 题 · 全部题目 374</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_24/index.html">
+  <div class="unit-kicker"><span>第 24 单元</span><span>92 词</span></div>
+  <div class="unit-name"><span class="unit-number">24</span><strong>Unit 24</strong><span>推荐 50 题 · 全部题目 309</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_25/index.html">
+  <div class="unit-kicker"><span>第 25 单元</span><span>100 词</span></div>
+  <div class="unit-name"><span class="unit-number">25</span><strong>Unit 25</strong><span>推荐 50 题 · 全部题目 271</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_26/index.html">
+  <div class="unit-kicker"><span>第 26 单元</span><span>97 词</span></div>
+  <div class="unit-name"><span class="unit-number">26</span><strong>Unit 26</strong><span>推荐 50 题 · 全部题目 227</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_27/index.html">
+  <div class="unit-kicker"><span>第 27 单元</span><span>66 词</span></div>
+  <div class="unit-name"><span class="unit-number">27</span><strong>Unit 27</strong><span>推荐 50 题 · 全部题目 226</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_28/index.html">
+  <div class="unit-kicker"><span>第 28 单元</span><span>99 词</span></div>
+  <div class="unit-name"><span class="unit-number">28</span><strong>Unit 28</strong><span>推荐 50 题 · 全部题目 128</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_29/index.html">
+  <div class="unit-kicker"><span>第 29 单元</span><span>101 词</span></div>
+  <div class="unit-name"><span class="unit-number">29</span><strong>Unit 29</strong><span>推荐 50 题 · 全部题目 83</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a><a class="unit-card" href="unit_30/index.html">
+  <div class="unit-kicker"><span>第 30 单元</span><span>40 词</span></div>
+  <div class="unit-name"><span class="unit-number">30</span><strong>Unit 30</strong><span>推荐 50 题 · 全部题目 54</span></div>
+  <div class="path">
+    <span class="pill ready">精讲</span>
+    <span class="pill ready">刷题</span>
+    <span class="pill ready">考察</span>
+  </div>
+</a></section>
+  </main>
+</body>
+</html>

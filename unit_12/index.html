@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 12 单元 学生入口</title>
+  <style>
+:root{--cream:#f7f4ed;--paper:#fffdf8;--ink:#1c1c1c;--muted:#706b61;--line:#ece7dc;--line-strong:#ddd4c7;--green:#245d52;--gold:#b8893f;--wash:#f1e7d9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:0}
+a{color:inherit;text-decoration:none}
+.shell{width:min(1180px,calc(100% - 44px));margin:auto;padding:28px 0 72px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:end;min-height:230px;border:1px solid var(--line);border-radius:18px;padding:30px;background:radial-gradient(circle at 18% 0%,rgba(184,137,63,.2),transparent 34%),radial-gradient(circle at 85% 20%,rgba(36,93,82,.14),transparent 34%),var(--paper)}
+.eyebrow{margin:0 0 10px;color:var(--green);font-size:13px;font-weight:720;letter-spacing:.08em;text-transform:uppercase}
+h1{margin:0;font-size:48px;line-height:1.02;font-weight:720;letter-spacing:-1.2px}
+.lead{max-width:680px;margin:14px 0 0;color:var(--muted);font-size:16px}
+.hero-panel{display:grid;gap:10px;justify-self:end;width:min(360px,100%)}
+.hero-stat{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted)}
+.hero-stat strong{color:var(--ink);font-size:22px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:28px 0 14px}
+h2{margin:0;font-size:24px;letter-spacing:-.35px}
+.hint{margin:0;color:var(--muted);font-size:14px}
+.unit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.unit-card{position:relative;display:grid;gap:13px;min-height:176px;border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:18px;transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.unit-card:hover{transform:translateY(-2px);border-color:var(--line-strong);background:#fffaf0}
+.unit-kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px}
+.unit-number{font-family:Georgia,"Times New Roman",serif;font-size:34px;line-height:1;color:var(--green);font-weight:700;letter-spacing:-.7px}
+.unit-name{display:grid;gap:2px}
+.unit-name strong{font-size:20px;letter-spacing:-.25px}
+.unit-name span{color:var(--muted);font-size:13px}
+.path{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:4px 8px;background:#fbf8f0;color:var(--muted);font-size:12px}
+.pill.ready{border-color:rgba(36,93,82,.28);color:var(--green);background:rgba(36,93,82,.06)}
+.pill.missing{color:#aaa;background:#f7f4ed}
+.meta{color:var(--muted);font-size:13px}
+.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(247,244,237,.92);backdrop-filter:blur(16px)}
+.topbar-inner{width:min(1180px,calc(100% - 44px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:52px}
+.brand{font-weight:720;letter-spacing:-.25px}
+.nav-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:34px;border:1px solid var(--line-strong);border-radius:8px;padding:6px 11px;background:transparent;color:var(--ink);font-size:13px}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.unit-hero{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;border:1px solid var(--line);border-radius:18px;background:radial-gradient(circle at 12% 0%,rgba(184,137,63,.18),transparent 34%),var(--paper);padding:28px;margin-top:24px}
+.unit-hero h1{font-size:42px}
+.lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.lesson-card{display:grid;gap:10px;border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:18px;min-height:180px}
+.lesson-card.disabled{opacity:.55}
+.lesson-card h2{font-size:22px}
+.lesson-card p{margin:0;color:var(--muted);font-size:14px}
+.lesson-card .btn{width:max-content;margin-top:auto}
+.small-link{color:var(--green);font-weight:650}
+@media(max-width:800px){.shell{width:min(100% - 28px,1180px);padding-top:18px}.hero,.unit-hero{grid-template-columns:1fr;padding:22px}.hero-panel{justify-self:stretch}h1{font-size:38px}.lesson-grid{grid-template-columns:1fr}.topbar-inner{width:min(100% - 28px,1180px);align-items:flex-start;flex-direction:column;padding:10px 0}.nav-actions{width:100%}.btn{flex:1}}
+</style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html">GRE 核心词汇一本通</a>
+      <div class="nav-actions"><a class="btn" href="../index.html">整套首页</a><a class="btn primary" href="刷题.html">直接刷题</a></div>
+    </div>
+  </nav>
+  <main class="shell">
+    <section class="unit-hero">
+      <div>
+        <p class="eyebrow">Unit 12</p>
+        <h1>第 12 单元</h1>
+        <p class="lead">本单元共 100 个词。推荐先完成精讲，再做 50 道推荐练习题。</p>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-stat"><span>推荐练习</span><strong>50</strong></div>
+        <div class="hero-stat"><span>全部题目</span><strong>258</strong></div>
+        <div class="hero-stat"><span>弱相关题</span><strong>0</strong></div>
+      </div>
+    </section>
+    <section class="lesson-grid">
+      <article class="lesson-card">
+        <h2>1. 词汇精讲</h2>
+        <p>学习本单元核心释义、语义场景、例句和词族迁移。</p>
+        <a class="btn primary" href="精讲.html">开始学习</a>
+      </article>
+      <article class="lesson-card">
+        <h2>2. 单元刷题</h2>
+        <p>默认推荐练习不提示本单元词，提交后判分，可保存复习题。</p>
+        <a class="btn primary" href="刷题.html">开始刷题</a>
+      </article>
+      <article class="lesson-card">
+  <h2>3. 熟悉度考察</h2>
+  <p>用卡片检查本单元单词是否真正熟悉，适合课后自检。</p>
+  <a class="btn" href="考察.html">进入考察</a>
+</article>
+    </section>
+    <p class="hint" style="margin-top:18px">备用数据文件：<a class="small-link" href="词汇数据.json">词汇数据.json</a></p>
+  </main>
+</body>
+</html>

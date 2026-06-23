@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit 30 / List 30 | 单词熟悉度考察</title>
+  <style>
+:root{--canvas:#faf9f5;--surface-soft:#f5f0e8;--surface-card:#efe9de;--surface-dark:#181715;--surface-dark-elevated:#252320;--surface-dark-soft:#1f1e1b;--primary:#cc785c;--primary-active:#a9583e;--ink:#141413;--body:#3d3d3a;--muted:#6c6a64;--muted-soft:#8e8b82;--hairline:#e6dfd8;--hairline-soft:#ebe6df;--on-primary:#fff;--on-dark:#faf9f5;--on-dark-soft:#a09d96}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.58 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,system-ui,sans-serif;letter-spacing:0}a{color:inherit}button,input{font:inherit}button{cursor:pointer}body.overlay-open{overflow:hidden}.site-nav,#pageShell{transition:filter .24s ease,opacity .24s ease,transform .24s ease}body.overlay-open .site-nav,body.overlay-open #pageShell{filter:blur(5px);opacity:.58;transform:scale(.992);pointer-events:none;user-select:none}.site-nav{position:sticky;top:0;z-index:20;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1200px)/2));background:rgba(250,249,245,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--hairline-soft)}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700}.spark{color:var(--primary);font-size:18px}.nav-note{color:var(--muted);font-size:14px;font-weight:500}.shell{width:min(1200px,calc(100% - 32px));margin:0 auto;padding:32px 0 80px}.index-shell{min-height:calc(100vh - 64px);display:grid;align-content:center;gap:32px}.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px);gap:48px;align-items:center;padding:48px 0 56px}.unit-hero{grid-template-columns:minmax(0,1fr) minmax(260px,440px);gap:28px;align-items:end;padding:20px 0 32px}.unit-hero h1{font-size:clamp(34px,5.2vw,58px);margin-bottom:12px}.unit-hero .hero-copy{font-size:18px}.hero-copy-block{min-width:0}.eyebrow{margin:0 0 12px;color:var(--primary);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.12em}h1{font-family:"Songti SC","Noto Serif CJK SC","Source Han Serif SC","STSong","SimSun",serif;font-size:clamp(40px,6.4vw,72px);font-weight:650;line-height:1.06;margin:0 0 18px;letter-spacing:0}.hero-copy{max-width:650px;margin:0;color:var(--body);font-size:20px;line-height:1.45}.hero-mockup,.session-panel{border-radius:16px;background:var(--surface-dark);color:var(--on-dark);padding:28px}.hero-mockup{min-height:300px;display:grid;align-content:center;gap:18px}.mockup-bar{display:flex;gap:7px}.mockup-bar span{width:10px;height:10px;border-radius:50%;background:var(--surface-dark-elevated)}.mockup-bar span:first-child{background:var(--primary)}.mockup-word{font-family:Cormorant Garamond,EB Garamond,Garamond,"Times New Roman",serif;font-size:52px;font-weight:500;line-height:1}.mockup-line{height:10px;width:68%;border-radius:999px;background:var(--surface-dark-elevated)}.mockup-line.wide{width:92%}.mockup-chips{display:flex;gap:8px;flex-wrap:wrap}.mockup-chips span{border:1px solid var(--surface-dark-elevated);border-radius:999px;padding:6px 10px;color:var(--on-dark-soft);font-size:13px}.session-panel{display:grid;gap:24px}.unit-hero .session-panel{min-height:148px;align-content:center;gap:18px;padding:22px 28px;border-radius:14px}.session-panel strong{display:block;font-size:24px;font-weight:500}.unit-hero .session-panel strong{font-size:22px}.panel-kicker{margin:0 0 4px;color:var(--on-dark-soft);font-size:12px;letter-spacing:.08em}.panel-actions{display:flex;gap:10px;flex-wrap:wrap}.unit-hero .primary-btn,.unit-hero .ghost-btn{min-height:36px;padding:8px 14px;font-size:13px}.unit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.unit-card{display:grid;gap:10px;min-height:174px;align-content:space-between;padding:28px;border:1px solid var(--hairline);border-radius:12px;background:var(--surface-card);color:var(--ink);text-decoration:none}.unit-card:hover{border-color:var(--primary);box-shadow:0 1px 3px rgba(20,20,19,.08)}.unit-kicker{color:var(--primary);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.12em}.unit-card strong{font-family:"Songti SC","Noto Serif CJK SC","Source Han Serif SC","STSong","SimSun",serif;font-size:31px;font-weight:650;line-height:1.12}.unit-card span:last-child{color:var(--muted)}.controls{position:sticky;top:64px;z-index:10;display:grid;grid-template-columns:auto minmax(240px,460px) auto;gap:14px;align-items:end;background:rgba(250,249,245,.94);backdrop-filter:blur(12px);padding:12px 0;border-top:1px solid var(--hairline-soft);border-bottom:1px solid var(--hairline-soft)}.controls>.ghost-btn{justify-self:end;white-space:nowrap}.back-link{color:var(--primary);text-decoration:none;font-weight:500;align-self:center}.search-wrap{display:grid;gap:6px;width:100%;color:var(--muted);font-size:13px;font-weight:500}.search-wrap input{height:42px;border:1px solid var(--hairline);border-radius:8px;background:var(--canvas);padding:0 14px;color:var(--ink);outline:none}.search-wrap input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(204,120,92,.15)}.primary-btn,.ghost-btn,.danger-btn{min-height:40px;border-radius:8px;padding:10px 16px;font-size:14px;font-weight:500}.primary-btn{border:1px solid var(--primary);background:var(--primary);color:var(--on-primary)}.primary-btn:hover{background:var(--primary-active);border-color:var(--primary-active)}.ghost-btn{border:1px solid var(--hairline);background:var(--canvas);color:var(--ink)}.ghost-btn:hover{border-color:var(--primary);color:var(--primary)}.ghost-btn.on-dark{border-color:var(--surface-dark-elevated);background:var(--surface-dark-elevated);color:var(--on-dark)}.danger-btn{border:1px solid rgba(204,120,92,.28);background:var(--surface-soft);color:var(--primary-active)}.status-line{min-height:26px;margin:16px 0;color:var(--muted);font-weight:500}.word-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:10px;align-items:stretch}.word-btn{min-height:68px;width:100%;border:1px solid var(--hairline);border-radius:12px;background:var(--surface-card);color:var(--ink);padding:12px 14px;text-align:left;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center}.word-btn:hover,.word-btn.active{border-color:var(--primary);background:var(--canvas);box-shadow:0 1px 3px rgba(20,20,19,.08)}.word-btn.unknown{border-color:var(--primary);background:#f4dfd4}.word-index{color:var(--muted-soft);font-size:12px;font-variant-numeric:tabular-nums}.word-label{font-size:16px;font-weight:650;overflow-wrap:break-word;word-break:normal;line-height:1.25}.card-overlay{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px;opacity:0;visibility:hidden;pointer-events:none;perspective:1200px;transition:opacity .22s ease,visibility .22s ease}.card-overlay.open{opacity:1;visibility:visible;pointer-events:auto}.overlay-backdrop{position:absolute;inset:0;border:0;padding:0;border-radius:0;background:rgba(20,20,19,.34);cursor:zoom-out}.floating-card-host{position:relative;z-index:1;width:min(92vw,760px);max-height:82vh;overflow:auto;border-radius:16px;opacity:0;transform:translateY(22px) scale(.9) rotateX(8deg) rotateY(-4deg);transform-origin:50% 42%;transition:opacity .24s ease,transform .32s cubic-bezier(.2,.8,.2,1);scrollbar-width:thin}.card-overlay.open .floating-card-host{opacity:1;transform:translateY(0) scale(1) rotateX(0) rotateY(0)}.detail-card{border-radius:14px;background:var(--surface-dark);color:var(--on-dark);padding:28px}.detail-card.unknown{box-shadow:inset 0 0 0 2px rgba(204,120,92,.48)}.detail-head{display:flex;gap:20px;align-items:start;justify-content:space-between;border-bottom:1px solid var(--surface-dark-elevated);padding-bottom:18px;margin-bottom:20px}.detail-title-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.detail-title h2{font-family:Cormorant Garamond,EB Garamond,Garamond,"Times New Roman",serif;font-size:clamp(40px,6.2vw,64px);font-weight:500;line-height:.95;margin:0 0 10px;letter-spacing:0}.pronounce-btn{display:inline-grid;place-items:center;width:38px;height:38px;margin-bottom:10px;border:1px solid var(--surface-dark-elevated);border-radius:50%;background:var(--surface-dark-soft);color:var(--on-dark);font-size:14px;line-height:1}.pronounce-btn:hover,.pronounce-btn.playing{border-color:var(--primary);background:var(--primary);color:var(--on-primary)}.pronounce-btn.error{border-color:#b45a45;color:#ffc0ae}.meta{color:var(--on-dark-soft);font-weight:500}.detail-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}.core-line{font-size:20px;font-weight:500;margin:0 0 16px;color:var(--on-dark);max-width:850px}.block{border-top:1px solid var(--surface-dark-elevated);padding-top:16px;margin-top:16px}.block:first-of-type{border-top:0;padding-top:0}.block h3{font-size:12px;margin:0 0 10px;color:var(--on-dark-soft);text-transform:uppercase;letter-spacing:.12em;font-weight:500}.pattern-row{display:flex;gap:7px;flex-wrap:wrap}.chip{display:inline-flex;align-items:center;min-height:32px;border-radius:999px;background:var(--surface-dark-elevated);color:var(--on-dark);padding:5px 12px;font-weight:500}.examples{display:grid;gap:9px}.example{margin:0;padding:12px 14px;border-left:3px solid var(--primary);background:var(--surface-dark-soft);border-radius:8px;font-size:16px;font-weight:400;color:var(--on-dark)}.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.related-item{border:1px solid var(--surface-dark-elevated);border-radius:8px;padding:12px;background:var(--surface-dark-soft)}.related-item strong{display:block;color:var(--on-dark)}.related-item p{margin:5px 0 0;color:var(--on-dark-soft)}.empty{grid-column:1/-1;border:1px dashed var(--hairline);border-radius:12px;padding:28px;text-align:center;color:var(--muted);background:var(--surface-soft)}@media(max-width:900px){.hero{grid-template-columns:1fr;gap:24px;padding:36px 0 42px}.unit-hero{padding:22px 0 28px;gap:18px}.unit-hero .session-panel{min-height:0}.controls{grid-template-columns:1fr;align-items:stretch}.controls>.ghost-btn{justify-self:stretch}}@media(max-width:680px){.site-nav{padding:0 16px}.nav-note{display:none}.shell{width:min(100% - 18px,1200px);padding-top:28px}.detail-head{display:grid}.detail-actions{justify-content:start}.hero-mockup,.session-panel,.detail-card{border-radius:12px;padding:22px}body.overlay-open .site-nav,body.overlay-open #pageShell{filter:blur(3px)}.card-overlay{padding:14px}.floating-card-host{width:min(94vw,760px);max-height:82vh;border-radius:12px}.word-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}.word-btn{min-height:64px}}
+</style>
+</head>
+<body>
+  <header class="site-nav">
+    <a class="brand" href="index.html"><span class="spark">✣</span><span>单词熟悉度考察</span></a>
+    <span class="nav-note">Unit 30 / List 30</span>
+  </header>
+  <main id="pageShell" class="shell">
+    <section class="hero unit-hero">
+      <div class="hero-copy-block">
+        <p class="eyebrow">GRE 课堂检查</p>
+        <h1>Unit 30 / List 30</h1>
+        <p class="hero-copy">共 <span id="totalCount">40</span> 个词 · 已标记 <span id="missedCount">0</span> 个不会</p>
+      </div>
+      <aside class="session-panel" aria-label="Session actions">
+        <div>
+          <p class="panel-kicker">课堂记录</p>
+          <strong>不会词清单</strong>
+        </div>
+        <div class="panel-actions">
+          <button id="copyText" class="ghost-btn on-dark" type="button">复制清单</button>
+          <button id="exportCsv" class="primary-btn" type="button">导出 CSV</button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="controls" aria-label="Controls">
+      <a class="back-link" href="index.html">全部单元</a>
+      <label class="search-wrap">
+        <span>搜索单词</span>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="输入英文单词">
+      </label>
+      <button id="clearMarks" class="ghost-btn" type="button">清空标记</button>
+    </section>
+
+    <div id="statusLine" class="status-line" role="status" aria-live="polite"></div>
+    <section id="wordGrid" class="word-grid" aria-label="Words"></section>
+  </main>
+
+  <div id="cardOverlay" class="card-overlay" aria-hidden="true">
+    <button id="overlayBackdrop" class="overlay-backdrop" type="button" aria-label="关闭卡片"></button>
+    <section id="floatingCardHost" class="floating-card-host" aria-live="polite"></section>
+  </div>
+  <script id="unitData" type="application/json">{"unit_id":"unit_30","unit_title":"Unit 30 / List 30","word_count":40,"items":[{"unit_id":"unit_30","index":1,"word":"barbarous","phonetic":"/ˈbɑːrbərəs/","pos":"adjective","core_en":"cruel, brutal, or uncivilized","audio_src":"audio/001_barbarous.mp3","patterns":["barbarous punishment","barbarous practice","barbarous treatment","barbarous cruelty"],"examples":[{"sentence":"The prisoners were subjected to barbarous treatment."},{"sentence":"The reformers condemned the barbarous practice as incompatible with modern law."}],"related":[{"word":"cruel","example":""},{"word":"brutal","example":""},{"word":"savage","example":""},{"word":"humane","example":""},{"word":"barbarian","example":""},{"word":"barbarism","example":""},{"word":"barbarity","example":""}]},{"unit_id":"unit_30","index":2,"word":"barbarian","phonetic":"/bɑːrˈberiən/","pos":"noun; adjective","core_en":"a person regarded as uncivilized, or relating to such people","audio_src":"audio/002_barbarian.mp3","patterns":["barbarian tribes","barbarian invasions","barbarian warriors","act like a barbarian","barbarian behavior","a cultural barbarian"],"examples":[{"sentence":"Roman writers often portrayed northern tribes as barbarians."},{"sentence":"He called the vandals barbarians after they destroyed the monument."}],"related":[{"word":"savage","example":""},{"word":"uncivilized person","example":""},{"word":"vandal","example":""},{"word":"civilized person","example":""},{"word":"barbarous","example":""},{"word":"barbarism","example":""},{"word":"barbarity","example":""}]},{"unit_id":"unit_30","index":3,"word":"patrician","phonetic":"/pəˈtrɪʃən/","pos":"adjective; noun","core_en":"aristocratic, refined, or belonging to a high social class","audio_src":"audio/003_patrician.mp3","patterns":["a patrician family","patrician background","patrician class","patrician manners","patrician taste","patrician bearing"],"examples":[{"sentence":"He came from a patrician family with deep political connections."},{"sentence":"Her patrician manners made the interview feel formal and distant."}],"related":[{"word":"upper-class","example":""},{"word":"aristocratic","example":""},{"word":"refined","example":""},{"word":"plebeian","example":""},{"word":"patriciate","example":""},{"word":"patriarch","example":""}]},{"unit_id":"unit_30","index":4,"word":"persecution","phonetic":"/ˌpɜːrsɪˈkjuːʃən/","pos":"noun","core_en":"systematic mistreatment of a person or group, often because of belief, identity, or politics","audio_src":"audio/004_persecution.mp3","patterns":["religious persecution","political persecution","persecution of minorities","flee persecution"],"examples":[{"sentence":"Many writers fled the country to escape political persecution."},{"sentence":"The law was used to justify the persecution of religious minorities."}],"related":[{"word":"mistreatment","example":""},{"word":"oppression","example":""},{"word":"harassment","example":""},{"word":"protection","example":""},{"word":"persecute","example":""},{"word":"persecuted","example":""},{"word":"persecutor","example":""}]},{"unit_id":"unit_30","index":5,"word":"glacier","phonetic":"/ˈɡleɪʃər/","pos":"noun","core_en":"a large mass of ice that moves slowly over land","audio_src":"audio/005_glacier.mp3","patterns":["a melting glacier","a retreating glacier","glacial ice","glacier movement"],"examples":[{"sentence":"The retreating glacier exposed rocks that had been buried for centuries."},{"sentence":"Glaciers carved deep valleys as they moved across the landscape."}],"related":[{"word":"ice mass","example":""},{"word":"ice sheet","example":""},{"word":"glacial field","example":""},{"word":"meltwater","example":""},{"word":"glacial","example":""},{"word":"glaciation","example":""},{"word":"glaciologist","example":""}]},{"unit_id":"unit_30","index":6,"word":"pump","phonetic":"/pʌmp/","pos":"verb; noun","core_en":"to move liquid, gas, money, or energy forcefully into or out of something","audio_src":"audio/006_pump.mp3","patterns":["pump water","pump air","pump blood","pump out liquid","pump money into","pump resources into","pump information into","pump energy into"],"examples":[{"sentence":"The machine pumps water from the well into the tank."},{"sentence":"The government pumped money into the banking system."},{"sentence":"The coach pumped energy into the tired team."}],"related":[{"word":"move","example":""},{"word":"inject","example":""},{"word":"channel","example":""},{"word":"drain","example":""},{"word":"pumping","example":""},{"word":"pump","example":""},{"word":"injection","example":""}]},{"unit_id":"unit_30","index":7,"word":"syndrome","phonetic":"/ˈsɪndroʊm/","pos":"noun","core_en":"a set of symptoms or related features that occur together","audio_src":"audio/007_syndrome.mp3","patterns":["a rare syndrome","Down syndrome","symptoms of a syndrome","diagnose a syndrome","a political syndrome","a familiar syndrome","the syndrome of dependency"],"examples":[{"sentence":"The doctor recognized the syndrome because the symptoms appeared together."},{"sentence":"The same pattern appeared again: short-term planning followed by repeated failure."}],"related":[{"word":"condition","example":""},{"word":"disorder","example":""},{"word":"pattern","example":""},{"word":"symptom","example":""},{"word":"symptomatic","example":""},{"word":"synchronous","example":""}]},{"unit_id":"unit_30","index":8,"word":"vertebrate","phonetic":"/ˈvɜːrtɪbrət/","pos":"noun; adjective","core_en":"an animal with a backbone, or relating to such animals","audio_src":"audio/008_vertebrate.mp3","patterns":["vertebrate animals","vertebrate species","vertebrate evolution","a vertebrate skeleton"],"examples":[{"sentence":"Birds, mammals, and fish are all vertebrates."},{"sentence":"The fossil helped scientists trace vertebrate evolution."}],"related":[{"word":"backboned animal","example":""},{"word":"chordate","example":""},{"word":"invertebrate","example":""},{"word":"vertebra","example":""},{"word":"vertebral","example":""}]},{"unit_id":"unit_30","index":9,"word":"craft","phonetic":"/kræft/","pos":"noun; verb","core_en":"skill in making things, or to make something with care and skill","audio_src":"audio/009_craft.mp3","patterns":["traditional craft","a skilled craft","the craft of writing","learn a craft","craft a speech","craft a policy","carefully crafted","craft a narrative"],"examples":[{"sentence":"The museum preserves the traditional craft of glassmaking."},{"sentence":"The lawyer crafted a careful argument from limited evidence."},{"sentence":"The speech was crafted to appeal to undecided voters."}],"related":[{"word":"skill","example":""},{"word":"artistry","example":""},{"word":"fashion","example":""},{"word":"carelessness","example":""},{"word":"crafty","example":""},{"word":"craftsman","example":""},{"word":"craftsmanship","example":""}]},{"unit_id":"unit_30","index":10,"word":"anthropology","phonetic":"/ˌænθrəˈpɑːlədʒi/","pos":"noun","core_en":"the study of human societies, cultures, and development","audio_src":"audio/010_anthropology.mp3","patterns":["cultural anthropology","social anthropology","anthropological research","study anthropology"],"examples":[{"sentence":"Anthropology examines how rituals shape social life."},{"sentence":"Her fieldwork in the village became a classic study in cultural anthropology."}],"related":[{"word":"study of humans","example":""},{"word":"ethnography","example":""},{"word":"sociology","example":""},{"word":"archaeology","example":""},{"word":"anthropologist","example":""},{"word":"anthropological","example":""},{"word":"anthropocentric","example":""}]},{"unit_id":"unit_30","index":11,"word":"herbivore","phonetic":"/ˈhɜːrbɪvɔːr/","pos":"noun","core_en":"an animal that eats plants","audio_src":"audio/011_herbivore.mp3","patterns":["large herbivores","herbivores and carnivores","herbivore population","grazing herbivores"],"examples":[{"sentence":"Deer are herbivores that feed mainly on leaves and grass."},{"sentence":"A decline in large herbivores changed the structure of the grassland."}],"related":[{"word":"plant-eating animal","example":""},{"word":"grazer","example":""},{"word":"carnivore","example":""},{"word":"omnivore","example":""},{"word":"herbivorous","example":""}]},{"unit_id":"unit_30","index":12,"word":"rhetorical","phonetic":"/rɪˈtɔːrɪkəl/","pos":"adjective","core_en":"relating to persuasive language, or asked for effect rather than an answer","audio_src":"audio/012_rhetorical.mp3","patterns":["rhetorical skill","rhetorical strategy","rhetorical flourish","rhetorical style","a rhetorical question","purely rhetorical","rhetorical effect"],"examples":[{"sentence":"The speech relied on rhetorical skill rather than detailed evidence."},{"sentence":"“Who could accept such a policy?” was a rhetorical question, not a request for answers."}],"related":[{"word":"persuasive","example":""},{"word":"oratorical","example":""},{"word":"florid","example":""},{"word":"literal","example":""},{"word":"rhetoric","example":""},{"word":"rhetorician","example":""},{"word":"rhetorically","example":""}]},{"unit_id":"unit_30","index":13,"word":"scenario","phonetic":"/səˈnæriˌoʊ/","pos":"noun","core_en":"a possible situation or sequence of events imagined or planned for","audio_src":"audio/013_scenario.mp3","patterns":["a likely scenario","worst-case scenario","possible scenario","scenario planning"],"examples":[{"sentence":"The report considers a worst-case scenario in which sea levels rise rapidly."},{"sentence":"In one possible scenario, the reform reduces costs but increases inequality."}],"related":[{"word":"situation","example":""},{"word":"hypothetical case","example":""},{"word":"projection","example":""},{"word":"reality","example":""},{"word":"scene","example":""},{"word":"scenic","example":""},{"word":"screenplay","example":""}]},{"unit_id":"unit_30","index":14,"word":"at the expense of","phonetic":"/ət ði ɪkˈspens əv/","pos":"phrase","core_en":"with harm, loss, or sacrifice to something else","audio_src":"audio/014_at-the-expense-of.mp3","patterns":["at the expense of quality","at the expense of freedom","at the expense of workers","growth at the expense of the environment"],"examples":[{"sentence":"The company increased profits at the expense of product quality."},{"sentence":"Rapid development often came at the expense of local ecosystems."}],"related":[{"word":"by sacrificing","example":""},{"word":"to the detriment of","example":""},{"word":"without sacrificing","example":""},{"word":"expense","example":""},{"word":"expensive","example":""},{"word":"expend","example":""}]},{"unit_id":"unit_30","index":15,"word":"guild","phonetic":"/ɡɪld/","pos":"noun","core_en":"an association of people with the same trade or craft, especially in medieval towns","audio_src":"audio/015_guild.mp3","patterns":["a merchants’ guild","a craft guild","guild members","the guild controlled trade"],"examples":[{"sentence":"The medieval guild regulated the training of young craftsmen."},{"sentence":"Membership in the guild gave artisans access to markets and protection."}],"related":[{"word":"association","example":""},{"word":"union","example":""},{"word":"corporation","example":""},{"word":"guildhall","example":""},{"word":"guildsman","example":""},{"word":"artisan","example":""}]},{"unit_id":"unit_30","index":16,"word":"leach","phonetic":"/liːtʃ/","pos":"verb","core_en":"to remove or be removed from a material by water passing through it","audio_src":"audio/016_leach.mp3","patterns":["nutrients leach from soil","chemicals leach into water","leach out minerals","leaching process"],"examples":[{"sentence":"Heavy rain can leach nutrients from the soil."},{"sentence":"Chemicals from the waste may leach into groundwater."}],"related":[{"word":"wash out","example":""},{"word":"percolate","example":""},{"word":"dissolve out","example":""},{"word":"retain","example":""},{"word":"leaching","example":""},{"word":"leachate","example":""},{"word":"percolation","example":""}]},{"unit_id":"unit_30","index":17,"word":"comic strips","phonetic":"/ˈkɑːmɪk strɪps/","pos":"noun phrase","core_en":"a sequence of drawings that tells a short humorous or narrative story","audio_src":"audio/017_comic-strips.mp3","patterns":["newspaper comic strips","a daily comic strip","read comic strips","comic strip panels"],"examples":[{"sentence":"The newspaper published a comic strip about office life."},{"sentence":"Children learned the story by following the comic strip panels."}],"related":[{"word":"cartoons","example":""},{"word":"sequential art","example":""},{"word":"comic book","example":""},{"word":"comic","example":""},{"word":"cartoonist","example":""},{"word":"panel","example":""}]},{"unit_id":"unit_30","index":18,"word":"act","phonetic":"/ækt/","pos":"noun; verb","core_en":"a law, a deed, or the action of doing something","audio_src":"audio/018_act.mp3","patterns":["an act of Congress","the Clean Air Act","pass an act","under the act","an act of kindness","act quickly","act in a play"],"examples":[{"sentence":"The new act requires factories to limit emissions."},{"sentence":"Congress passed an act to protect endangered species."},{"sentence":"Her act of kindness changed the child’s life."}],"related":[{"word":"law","example":""},{"word":"statute","example":""},{"word":"deed","example":""},{"word":"inaction","example":""},{"word":"action","example":""},{"word":"enact","example":""},{"word":"active","example":""}]},{"unit_id":"unit_30","index":19,"word":"evaporation","phonetic":"/ɪˌvæpəˈreɪʃən/","pos":"noun","core_en":"the process by which liquid changes into vapor","audio_src":"audio/019_evaporation.mp3","patterns":["water evaporation","rate of evaporation","evaporation from lakes","evaporation and condensation"],"examples":[{"sentence":"High temperatures increase the rate of evaporation from the lake."},{"sentence":"Evaporation and condensation are key parts of the water cycle."}],"related":[{"word":"drying","example":""},{"word":"vaporization","example":""},{"word":"condensation","example":""},{"word":"evaporate","example":""},{"word":"evaporative","example":""},{"word":"vapor","example":""}]},{"unit_id":"unit_30","index":20,"word":"analogy","phonetic":"/əˈnælədʒi/","pos":"noun","core_en":"a comparison between two things that helps explain a similarity","audio_src":"audio/020_analogy.mp3","patterns":["draw an analogy","make an analogy","an analogy between A and B","a useful analogy","a weak analogy","a misleading analogy","the analogy breaks down"],"examples":[{"sentence":"The teacher drew an analogy between the brain and a computer."},{"sentence":"The analogy helped readers understand the abstract theory."},{"sentence":"The analogy breaks down because markets do not behave like machines."}],"related":[{"word":"comparison","example":""},{"word":"parallel","example":""},{"word":"metaphor","example":""},{"word":"contrast","example":""},{"word":"analogous","example":""},{"word":"analogue","example":""},{"word":"analogical","example":""}]},{"unit_id":"unit_30","index":21,"word":"precipitation","phonetic":"/prɪˌsɪpɪˈteɪʃən/","pos":"noun","core_en":"rain, snow, or other water falling from the sky; also a chemical solid forming from solution","audio_src":"audio/021_precipitation.mp3","patterns":["heavy precipitation","annual precipitation","precipitation levels","precipitation patterns","chemical precipitation","precipitation reaction","precipitation of minerals"],"examples":[{"sentence":"The region receives most of its precipitation in winter."},{"sentence":"Climate change may alter precipitation patterns across the continent."},{"sentence":"The experiment caused the precipitation of a white solid."}],"related":[{"word":"rainfall","example":""},{"word":"condensation","example":""},{"word":"deposit","example":""},{"word":"evaporation","example":""},{"word":"precipitate","example":""},{"word":"precipitous","example":""},{"word":"precipitant","example":""}]},{"unit_id":"unit_30","index":22,"word":"seminal","phonetic":"/ˈsemɪnəl/","pos":"adjective","core_en":"highly original and influential, especially in shaping later work","audio_src":"audio/022_seminal.mp3","patterns":["a seminal work","a seminal paper","a seminal study","seminal contribution"],"examples":[{"sentence":"Her seminal paper changed how scientists understood memory."},{"sentence":"The book is considered a seminal work in modern anthropology."}],"related":[{"word":"influential","example":""},{"word":"groundbreaking","example":""},{"word":"formative","example":""},{"word":"derivative","example":""},{"word":"seed","example":""},{"word":"seminar","example":""},{"word":"germinal","example":""}]},{"unit_id":"unit_30","index":23,"word":"coin","phonetic":"/kɔɪn/","pos":"verb; noun","core_en":"to invent a word or phrase; also a piece of metal money","audio_src":"audio/023_coin.mp3","patterns":["coin a term","coin a phrase","newly coined word","coin the expression","a silver coin","ancient coins","coin collection"],"examples":[{"sentence":"The sociologist coined the term to describe a new form of urban life."},{"sentence":"The phrase was coined in the nineteenth century."},{"sentence":"The museum displayed coins from several ancient empires."}],"related":[{"word":"invent","example":""},{"word":"formulate","example":""},{"word":"mint","example":""},{"word":"coinage","example":""},{"word":"coined","example":""}]},{"unit_id":"unit_30","index":24,"word":"coinage","phonetic":"/ˈkɔɪnɪdʒ/","pos":"noun","core_en":"coins collectively, or the invention of a new word or phrase","audio_src":"audio/024_coinage.mp3","patterns":["ancient coinage","national coinage","silver coinage","the coinage of a term","a recent coinage","literary coinage"],"examples":[{"sentence":"The archaeologists studied the empire’s coinage to trace trade routes."},{"sentence":"The coinage of the term reflected a shift in public debate."},{"sentence":"Some recent coinages disappear quickly, while others enter ordinary speech."}],"related":[{"word":"coins","example":""},{"word":"neologism","example":""},{"word":"currency","example":""},{"word":"coin","example":""},{"word":"minting","example":""}]},{"unit_id":"unit_30","index":25,"word":"value","phonetic":"/ˈvæljuː/","pos":"noun; verb","core_en":"worth, principles, or the act of considering something important","audio_src":"audio/025_value.mp3","patterns":["economic value","cultural value","practical value","value of evidence","moral values","social values","shared values","conflicting values"],"examples":[{"sentence":"The artifact has cultural value beyond its market price."},{"sentence":"The debate revealed a conflict between economic interests and social values."},{"sentence":"The community values independence more than efficiency."}],"related":[{"word":"worth","example":""},{"word":"principle","example":""},{"word":"significance","example":""},{"word":"worthlessness","example":""},{"word":"valuable","example":""},{"word":"evaluate","example":""},{"word":"valuation","example":""}]},{"unit_id":"unit_30","index":26,"word":"contaminate","phonetic":"/kənˈtæmɪneɪt/","pos":"verb","core_en":"to make something impure, dirty, unsafe, or corrupted","audio_src":"audio/026_contaminate.mp3","patterns":["contaminate water","contaminated food","contaminate a sample","soil contamination","contaminate the evidence","contaminate the process","contaminate public debate"],"examples":[{"sentence":"Industrial waste contaminated the river."},{"sentence":"The laboratory discarded the contaminated samples."},{"sentence":"Political pressure contaminated the investigation."}],"related":[{"word":"pollute","example":""},{"word":"taint","example":""},{"word":"corrupt","example":""},{"word":"purify","example":""},{"word":"contamination","example":""},{"word":"contaminant","example":""},{"word":"uncontaminated","example":""}]},{"unit_id":"unit_30","index":27,"word":"ingest","phonetic":"/ɪnˈdʒest/","pos":"verb","core_en":"to take food, drink, or another substance into the body","audio_src":"audio/027_ingest.mp3","patterns":["ingest food","ingest toxins","ingest medication","ingest large amounts of"],"examples":[{"sentence":"The animal became ill after ingesting a toxic plant."},{"sentence":"Patients should not ingest the medication on an empty stomach."}],"related":[{"word":"eat","example":""},{"word":"consume","example":""},{"word":"swallow","example":""},{"word":"excrete","example":""},{"word":"ingestion","example":""},{"word":"digest","example":""},{"word":"digestive","example":""}]},{"unit_id":"unit_30","index":28,"word":"veto","phonetic":"/ˈviːtoʊ/","pos":"verb; noun","core_en":"to officially reject or block a decision, law, or proposal","audio_src":"audio/028_veto.mp3","patterns":["veto a bill","veto a proposal","presidential veto","veto power"],"examples":[{"sentence":"The president vetoed the bill after weeks of debate."},{"sentence":"A single member can veto the committee’s decision."}],"related":[{"word":"reject","example":""},{"word":"block","example":""},{"word":"overrule","example":""},{"word":"approve","example":""},{"word":"vetoed","example":""},{"word":"vetoer","example":""},{"word":"override","example":""}]},{"unit_id":"unit_30","index":29,"word":"nervous","phonetic":"/ˈnɜːrvəs/","pos":"adjective","core_en":"relating to nerves, or feeling anxious and uneasy","audio_src":"audio/029_nervous.mp3","patterns":["nervous system","nervous tissue","nervous disorder","central nervous system","feel nervous","nervous about","a nervous smile","nervous energy"],"examples":[{"sentence":"The central nervous system controls movement and sensation."},{"sentence":"She felt nervous before the interview."},{"sentence":"His nervous smile revealed his uncertainty."}],"related":[{"word":"anxious","example":""},{"word":"neural","example":""},{"word":"apprehensive","example":""},{"word":"calm","example":""},{"word":"nerve","example":""},{"word":"neuron","example":""},{"word":"neuroscience","example":""}]},{"unit_id":"unit_30","index":30,"word":"mineral","phonetic":"/ˈmɪnərəl/","pos":"noun; adjective","core_en":"a naturally occurring inorganic substance, often found in rocks","audio_src":"audio/030_mineral.mp3","patterns":["mineral deposits","mineral resources","mineral composition","mineral crystals","vitamins and minerals","essential minerals","mineral deficiency"],"examples":[{"sentence":"The region is rich in mineral deposits."},{"sentence":"Geologists identified the mineral by its crystal structure."},{"sentence":"A lack of essential minerals can affect bone growth."}],"related":[{"word":"ore","example":""},{"word":"crystal","example":""},{"word":"inorganic substance","example":""},{"word":"organic matter","example":""},{"word":"mineralogy","example":""},{"word":"mineralize","example":""},{"word":"mine","example":""}]},{"unit_id":"unit_30","index":31,"word":"in light of","phonetic":"/ɪn laɪt əv/","pos":"phrase","core_en":"considering something as a reason or context for judgment","audio_src":"audio/031_in-light-of.mp3","patterns":["in light of the evidence","in light of recent events","in light of this fact","in light of new information"],"examples":[{"sentence":"In light of the new evidence, the committee reopened the case."},{"sentence":"The policy seems less effective in light of recent data."}],"related":[{"word":"considering","example":""},{"word":"given","example":""},{"word":"in view of","example":""},{"word":"regardless of","example":""},{"word":"light","example":""},{"word":"enlighten","example":""},{"word":"illuminate","example":""}]},{"unit_id":"unit_30","index":32,"word":"criterion","phonetic":"/kraɪˈtɪriən/","pos":"noun","core_en":"a standard used to judge, decide, or evaluate something","audio_src":"audio/032_criterion.mp3","patterns":["a criterion for success","evaluation criterion","meet a criterion","selection criteria"],"examples":[{"sentence":"Cost was not the only criterion for choosing the design."},{"sentence":"Applicants must meet several selection criteria."}],"related":[{"word":"standard","example":""},{"word":"benchmark","example":""},{"word":"yardstick","example":""},{"word":"criteria","example":""},{"word":"critical","example":""},{"word":"critique","example":""}]},{"unit_id":"unit_30","index":33,"word":"fat","phonetic":"/fæt/","pos":"noun; adjective","core_en":"a substance stored in the body or in food; also having too much body fat","audio_src":"audio/033_fat.mp3","patterns":["body fat","dietary fat","saturated fat","fat content","fat tissue","fat meat","a fat layer"],"examples":[{"sentence":"The study compared the effects of sugar and dietary fat."},{"sentence":"The animal stores fat to survive the winter."},{"sentence":"A thick fat layer helps seals stay warm in cold water."}],"related":[{"word":"oil","example":""},{"word":"lipid","example":""},{"word":"adipose","example":""},{"word":"lean","example":""},{"word":"fatty","example":""},{"word":"fatten","example":""}]},{"unit_id":"unit_30","index":34,"word":"circular","phonetic":"/ˈsɜːrkjələr/","pos":"adjective","core_en":"round in shape, moving in a cycle, or logically self-repeating","audio_src":"audio/034_circular.mp3","patterns":["circular shape","circular motion","circular path","circular orbit","circular reasoning","circular argument","circular logic"],"examples":[{"sentence":"The planets do not move in perfectly circular orbits."},{"sentence":"The claim rests on circular reasoning: it assumes what it tries to prove."},{"sentence":"The explanation became circular when each point depended on the next."}],"related":[{"word":"round","example":""},{"word":"cyclical","example":""},{"word":"self-referential","example":""},{"word":"linear","example":""},{"word":"circle","example":""},{"word":"circulate","example":""},{"word":"circulation","example":""}]},{"unit_id":"unit_30","index":35,"word":"subdue","phonetic":"/səbˈduː/","pos":"verb","core_en":"to bring under control, quiet, or make less intense","audio_src":"audio/035_subdue.mp3","patterns":["subdue an enemy","subdue a rebellion","subdue the crowd","subdue resistance","subdue anger","subdued colors","subdued lighting","subdued tone"],"examples":[{"sentence":"The army subdued the rebellion after weeks of fighting."},{"sentence":"She tried to subdue her anger during the meeting."},{"sentence":"The room was decorated in subdued colors."}],"related":[{"word":"control","example":""},{"word":"suppress","example":""},{"word":"quell","example":""},{"word":"arouse","example":""},{"word":"subdued","example":""},{"word":"subjugate","example":""}]},{"unit_id":"unit_30","index":36,"word":"variant","phonetic":"/ˈveriənt/","pos":"noun; adjective","core_en":"a form of something that differs slightly from other forms of the same thing","audio_src":"audio/036_variant.mp3","patterns":["a genetic variant","a regional variant","a variant form","virus variant"],"examples":[{"sentence":"The researchers identified a genetic variant linked to the disease."},{"sentence":"The word has several regional variants in pronunciation."}],"related":[{"word":"version","example":""},{"word":"variation","example":""},{"word":"form","example":""},{"word":"standard form","example":""},{"word":"vary","example":""},{"word":"invariant","example":""}]},{"unit_id":"unit_30","index":37,"word":"impetus","phonetic":"/ˈɪmpɪtəs/","pos":"noun","core_en":"a force or stimulus that makes something happen or develop","audio_src":"audio/037_impetus.mp3","patterns":["give impetus to","provide the impetus for","new impetus","lose impetus"],"examples":[{"sentence":"The crisis gave new impetus to political reform."},{"sentence":"Public concern provided the impetus for stricter safety rules."}],"related":[{"word":"push","example":""},{"word":"stimulus","example":""},{"word":"momentum","example":""},{"word":"obstacle","example":""},{"word":"impel","example":""},{"word":"impulse","example":""}]},{"unit_id":"unit_30","index":38,"word":"exile","phonetic":"/ˈeksaɪl/","pos":"noun; verb","core_en":"forced absence from one’s country or home, or to force someone away","audio_src":"audio/038_exile.mp3","patterns":["live in exile","go into exile","political exile","exile from one’s homeland","be exiled from","exile a leader","exiled community"],"examples":[{"sentence":"The poet lived in exile for twenty years."},{"sentence":"Many dissidents went into exile after the coup."},{"sentence":"The regime exiled several opposition leaders."}],"related":[{"word":"banishment","example":""},{"word":"deportation","example":""},{"word":"ostracism","example":""},{"word":"repatriation","example":""},{"word":"exiled","example":""},{"word":"exilic","example":""},{"word":"expel","example":""}]},{"unit_id":"unit_30","index":39,"word":"ecosystem","phonetic":"/ˈiːkoʊˌsɪstəm/","pos":"noun","core_en":"a community of organisms interacting with each other and their environment","audio_src":"audio/039_ecosystem.mp3","patterns":["forest ecosystem","marine ecosystem","ecosystem balance","ecosystem services","technology ecosystem","business ecosystem","startup ecosystem"],"examples":[{"sentence":"Pollution damaged the lake ecosystem."},{"sentence":"Predators help maintain balance in the ecosystem."},{"sentence":"The company built an ecosystem of apps, devices, and services."}],"related":[{"word":"environment","example":""},{"word":"habitat","example":""},{"word":"biosphere","example":""},{"word":"ecology","example":""},{"word":"ecological","example":""},{"word":"ecosystemic","example":""}]},{"unit_id":"unit_30","index":40,"word":"exclusively","phonetic":"/ɪkˈskluːsɪvli/","pos":"adverb","core_en":"only, solely, or limited to one person, group, purpose, or thing","audio_src":"audio/040_exclusively.mp3","patterns":["used exclusively for","available exclusively to","focus exclusively on","exclusively male/female","deal exclusively with","concerned exclusively with"],"examples":[{"sentence":"The fund is used exclusively for medical research."},{"sentence":"The archive is available exclusively to registered scholars."},{"sentence":"The study focuses exclusively on urban schools."}],"related":[{"word":"only","example":""},{"word":"solely","example":""},{"word":"strictly","example":""},{"word":"inclusively","example":""},{"word":"exclusive","example":""},{"word":"exclude","example":""},{"word":"inclusion","example":""}]}]}</script>
+  <script>
+const unit = JSON.parse(document.getElementById('unitData').textContent);
+const grid = document.getElementById('wordGrid');
+const cardOverlay = document.getElementById('cardOverlay');
+const overlayBackdrop = document.getElementById('overlayBackdrop');
+const floatingCardHost = document.getElementById('floatingCardHost');
+const missedCount = document.getElementById('missedCount');
+const statusLine = document.getElementById('statusLine');
+const searchInput = document.getElementById('searchInput');
+const storeKey = `baotingxie:${unit.unit_id}:unknown`;
+let activeIndex = null;
+let currentAudio = null;
+let currentAudioButton = null;
+let unknown = new Set(JSON.parse(localStorage.getItem(storeKey) || '[]'));
+
+function escapeHtml(v) {
+  return String(v ?? '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function saveMarks() {
+  localStorage.setItem(storeKey, JSON.stringify([...unknown].sort((a, b) => a - b)));
+  missedCount.textContent = unknown.size;
+}
+
+function setStatus(t) {
+  statusLine.textContent = t;
+  if (t) window.setTimeout(() => {
+    if (statusLine.textContent === t) statusLine.textContent = '';
+  }, 2200);
+}
+
+function stopAudio() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+  if (currentAudioButton) currentAudioButton.classList.remove('playing', 'error');
+  currentAudio = null;
+  currentAudioButton = null;
+}
+
+function playAudio(button) {
+  const src = button.dataset.audio;
+  if (!src) return;
+  if (currentAudioButton === button && currentAudio && !currentAudio.paused) {
+    stopAudio();
+    return;
+  }
+  stopAudio();
+  const audio = new Audio(src);
+  currentAudio = audio;
+  currentAudioButton = button;
+  button.classList.add('playing');
+  audio.addEventListener('ended', stopAudio);
+  audio.addEventListener('error', () => {
+    button.classList.remove('playing');
+    button.classList.add('error');
+    setStatus('音频暂时无法播放');
+  });
+  audio.play().catch(() => {
+    button.classList.remove('playing');
+    button.classList.add('error');
+    setStatus('音频暂时无法播放');
+  });
+}
+
+function renderGrid() {
+  const q = searchInput.value.trim().toLowerCase();
+  const items = unit.items.filter(i => !q || i.word.toLowerCase().includes(q));
+  grid.innerHTML = items.map(i => `<button class="word-btn ${unknown.has(i.index) ? 'unknown' : ''} ${activeIndex === i.index ? 'active' : ''}" type="button" data-index="${i.index}"><span class="word-index">${String(i.index).padStart(3, '0')}</span><span class="word-label">${escapeHtml(i.word)}</span></button>`).join('');
+  if (!items.length) grid.innerHTML = '<div class="empty">没有匹配的单词</div>';
+}
+
+function renderCardHtml(i) {
+  const patterns = i.patterns.length ? `<section class="block"><h3>Patterns</h3><div class="pattern-row">${i.patterns.map(p => `<span class="chip">${escapeHtml(p)}</span>`).join('')}</div></section>` : '';
+  const examples = i.examples.length ? `<section class="block"><h3>Example Sentences</h3><div class="examples">${i.examples.map(e => `<p class="example">${escapeHtml(e.sentence)}</p>`).join('')}</div></section>` : '';
+  const related = i.related.length ? `<section class="block"><h3>Related English Cues</h3><div class="related-grid">${i.related.map(r => `<div class="related-item"><strong>${escapeHtml(r.word)}</strong>${r.example ? `<p>${escapeHtml(r.example)}</p>` : ''}</div>`).join('')}</div></section>` : '';
+  const audioButton = i.audio_src ? `<button class="pronounce-btn" type="button" data-audio="${escapeHtml(i.audio_src)}" aria-label="Play pronunciation" title="Play pronunciation">▶</button>` : '';
+  return `<article class="detail-card ${unknown.has(i.index) ? 'unknown' : ''}"><header class="detail-head"><div class="detail-title"><div class="detail-title-row"><h2>${escapeHtml(i.word)}</h2>${audioButton}</div><div class="meta">${escapeHtml([i.phonetic, i.pos].filter(Boolean).join(' · '))}</div></div><div class="detail-actions"><button class="danger-btn" id="toggleUnknown" type="button">${unknown.has(i.index) ? '取消不会' : '标记不会'}</button><button class="ghost-btn" id="closeCard" type="button">收起卡片</button></div></header>${i.core_en ? `<p class="core-line">${escapeHtml(i.core_en)}</p>` : ''}${patterns}${examples}${related}</article>`;
+}
+
+function mountCard(i) {
+  stopAudio();
+  floatingCardHost.innerHTML = renderCardHtml(i);
+  document.getElementById('toggleUnknown').addEventListener('click', () => {
+    unknown.has(i.index) ? unknown.delete(i.index) : unknown.add(i.index);
+    saveMarks();
+    renderGrid();
+    mountCard(i);
+  });
+  document.getElementById('closeCard').addEventListener('click', closeCard);
+  const audioButton = floatingCardHost.querySelector('.pronounce-btn');
+  if (audioButton) audioButton.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+    playAudio(audioButton);
+  });
+  document.getElementById('toggleUnknown').focus({preventScroll: true});
+}
+
+function openCard(i) {
+  activeIndex = i.index;
+  renderGrid();
+  mountCard(i);
+  cardOverlay.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('overlay-open');
+  requestAnimationFrame(() => cardOverlay.classList.add('open'));
+}
+
+function closeCard() {
+  if (!cardOverlay.classList.contains('open')) return;
+  stopAudio();
+  cardOverlay.classList.remove('open');
+  document.body.classList.remove('overlay-open');
+  activeIndex = null;
+  renderGrid();
+  window.setTimeout(() => {
+    if (!cardOverlay.classList.contains('open')) {
+      floatingCardHost.innerHTML = '';
+      cardOverlay.setAttribute('aria-hidden', 'true');
+    }
+  }, 260);
+}
+
+function selectedUnknownItems() {
+  return unit.items.filter(i => unknown.has(i.index));
+}
+
+function csvValue(v) {
+  const t = String(v ?? '');
+  return /[",\n]/.test(t) ? `"${t.replaceAll('"', '""')}"` : t;
+}
+
+function buildCsv(items) {
+  const header = ['unit_id', 'index', 'word', 'phonetic', 'pos', 'core_en', 'patterns', 'example_sentences'];
+  const rows = items.map(i => [i.unit_id, String(i.index).padStart(3, '0'), i.word, i.phonetic, i.pos, i.core_en, i.patterns.join('; '), i.examples.map(e => e.sentence).join(' | ')]);
+  return [header, ...rows].map(r => r.map(csvValue).join(',')).join('\n');
+}
+
+function buildText(items) {
+  return items.map(i => {
+    const ex = i.examples[0]?.sentence || '';
+    return `${String(i.index).padStart(3, '0')} ${i.word}${i.pos ? ` (${i.pos})` : ''} - ${i.core_en}${ex ? ` | ${ex}` : ''}`;
+  }).join('\n');
+}
+
+grid.addEventListener('click', e => {
+  const b = e.target.closest('.word-btn');
+  if (!b) return;
+  const i = unit.items.find(i => i.index === Number(b.dataset.index));
+  if (i) openCard(i);
+});
+searchInput.addEventListener('input', renderGrid);
+overlayBackdrop.addEventListener('click', closeCard);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeCard();
+});
+document.getElementById('clearMarks').addEventListener('click', () => {
+  unknown = new Set();
+  saveMarks();
+  renderGrid();
+  if (activeIndex) {
+    const i = unit.items.find(i => i.index === activeIndex);
+    if (i) mountCard(i);
+  }
+  setStatus('已清空全部标记');
+});
+document.getElementById('exportCsv').addEventListener('click', () => {
+  const items = selectedUnknownItems();
+  if (!items.length) {
+    setStatus('还没有标记不会的词');
+    return;
+  }
+  const blob = new Blob([buildCsv(items)], {type: 'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `${unit.unit_id}_baotingxie_unknown.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  setStatus(`已导出 ${items.length} 个不会词`);
+});
+async function copyToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  ta.remove();
+}
+document.getElementById('copyText').addEventListener('click', async () => {
+  const items = selectedUnknownItems();
+  if (!items.length) {
+    setStatus('还没有标记不会的词');
+    return;
+  }
+  try {
+    await copyToClipboard(buildText(items));
+    setStatus(`已复制 ${items.length} 个不会词`);
+  } catch (e) {
+    setStatus('复制失败，可以改用导出 CSV');
+  }
+});
+saveMarks();
+renderGrid();
+</script>
+</body>
+</html>
