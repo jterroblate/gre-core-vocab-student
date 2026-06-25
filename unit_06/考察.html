@@ -236,71 +236,87 @@ const missedCount = document.getElementById('missedCount');
 const statusLine = document.getElementById('statusLine');
 const searchInput = document.getElementById('searchInput');
 const storeKey = `baotingxie:${unit.unit_id}:unknown`;
+const metaKey = `${storeKey}:meta_v1`;
+const clearKey = `${storeKey}:clearedAt`;
 let activeIndex = null;
 let currentAudio = null;
 let currentAudioButton = null;
-let unknown = new Set(JSON.parse(localStorage.getItem(storeKey) || '[]'));
+let syncTimer = null;
+let cloudHydrated = false;
+let lastSyncError = null;
+let unknownMeta = loadUnknownMeta();
+let unknown = new Set(Object.entries(unknownMeta).filter(([, value]) => value.marked).map(([index]) => Number(index)));
 
-function escapeHtml(v) {
-  return String(v ?? '').replace(/[&<>"']/g, c => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]));
+function nowIso() { return new Date().toISOString(); }
+function timeOf(value) {
+  const time = value ? new Date(value).getTime() : 0;
+  return Number.isFinite(time) ? time : 0;
 }
-
-function saveMarks() {
+function loadLegacyUnknown() {
+  try { return JSON.parse(localStorage.getItem(storeKey) || '[]'); } catch { return []; }
+}
+function normalizeExamMarks(raw) {
+  const normalized = {};
+  for (const [index, value] of Object.entries(raw || {})) {
+    if (!value || typeof value !== 'object') continue;
+    normalized[String(index)] = { marked: !!value.marked, updatedAt: value.updatedAt || nowIso() };
+  }
+  return normalized;
+}
+function loadUnknownMeta() {
+  let parsed = null;
+  try { parsed = JSON.parse(localStorage.getItem(metaKey) || 'null'); } catch {}
+  if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) return normalizeExamMarks(parsed);
+  const timestamp = nowIso();
+  const migrated = {};
+  for (const index of loadLegacyUnknown()) migrated[String(index)] = { marked: true, updatedAt: timestamp };
+  return migrated;
+}
+function readLocalClearTime() {
+  try { return localStorage.getItem(clearKey) || null; } catch { return null; }
+}
+function writeLocalClearTime(value) {
+  try { value ? localStorage.setItem(clearKey, value) : localStorage.removeItem(clearKey); } catch {}
+}
+function escapeHtml(v) {
+  return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+function saveMarks(options = {}) {
+  unknown = new Set(Object.entries(unknownMeta).filter(([, value]) => value.marked).map(([index]) => Number(index)));
+  localStorage.setItem(metaKey, JSON.stringify(unknownMeta));
   localStorage.setItem(storeKey, JSON.stringify([...unknown].sort((a, b) => a - b)));
   missedCount.textContent = unknown.size;
+  if (!options.skipCloud) scheduleCloudSave();
 }
-
 function setStatus(t) {
   statusLine.textContent = t;
-  if (t) window.setTimeout(() => {
-    if (statusLine.textContent === t) statusLine.textContent = '';
-  }, 2200);
+  if (t) window.setTimeout(() => { if (statusLine.textContent === t) statusLine.textContent = ''; }, 2200);
 }
-
 function stopAudio() {
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
-  }
+  if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
   if (currentAudioButton) currentAudioButton.classList.remove('playing', 'error');
   currentAudio = null;
   currentAudioButton = null;
 }
-
 function playAudio(button) {
   const src = button.dataset.audio;
   if (!src) return;
-  if (currentAudioButton === button && currentAudio && !currentAudio.paused) {
-    stopAudio();
-    return;
-  }
+  if (currentAudioButton === button && currentAudio && !currentAudio.paused) { stopAudio(); return; }
   stopAudio();
   const audio = new Audio(src);
   currentAudio = audio;
   currentAudioButton = button;
   button.classList.add('playing');
   audio.addEventListener('ended', stopAudio);
-  audio.addEventListener('error', () => {
-    button.classList.remove('playing');
-    button.classList.add('error');
-    setStatus('音频暂时无法播放');
-  });
-  audio.play().catch(() => {
-    button.classList.remove('playing');
-    button.classList.add('error');
-    setStatus('音频暂时无法播放');
-  });
+  audio.addEventListener('error', () => { button.classList.remove('playing'); button.classList.add('error'); setStatus('音频暂时无法播放'); });
+  audio.play().catch(() => { button.classList.remove('playing'); button.classList.add('error'); setStatus('音频暂时无法播放'); });
 }
-
 function renderGrid() {
   const q = searchInput.value.trim().toLowerCase();
   const items = unit.items.filter(i => !q || i.word.toLowerCase().includes(q));
   grid.innerHTML = items.map(i => `<button class="word-btn ${unknown.has(i.index) ? 'unknown' : ''} ${activeIndex === i.index ? 'active' : ''}" type="button" data-index="${i.index}"><span class="word-index">${String(i.index).padStart(3, '0')}</span><span class="word-label">${escapeHtml(i.word)}</span></button>`).join('');
   if (!items.length) grid.innerHTML = '<div class="empty">没有匹配的单词</div>';
 }
-
 function renderCardHtml(i) {
   const patterns = i.patterns.length ? `<section class="block"><h3>Patterns</h3><div class="pattern-row">${i.patterns.map(p => `<span class="chip">${escapeHtml(p)}</span>`).join('')}</div></section>` : '';
   const examples = i.examples.length ? `<section class="block"><h3>Example Sentences</h3><div class="examples">${i.examples.map(e => `<p class="example">${escapeHtml(e.sentence)}</p>`).join('')}</div></section>` : '';
@@ -308,26 +324,22 @@ function renderCardHtml(i) {
   const audioButton = i.audio_src ? `<button class="pronounce-btn" type="button" data-audio="${escapeHtml(i.audio_src)}" aria-label="Play pronunciation" title="Play pronunciation">▶</button>` : '';
   return `<article class="detail-card ${unknown.has(i.index) ? 'unknown' : ''}"><header class="detail-head"><div class="detail-title"><div class="detail-title-row"><h2>${escapeHtml(i.word)}</h2>${audioButton}</div><div class="meta">${escapeHtml([i.phonetic, i.pos].filter(Boolean).join(' · '))}</div></div><div class="detail-actions"><button class="danger-btn" id="toggleUnknown" type="button">${unknown.has(i.index) ? '取消不会' : '标记不会'}</button><button class="ghost-btn" id="closeCard" type="button">收起卡片</button></div></header>${i.core_en ? `<p class="core-line">${escapeHtml(i.core_en)}</p>` : ''}${patterns}${examples}${related}</article>`;
 }
-
 function mountCard(i) {
   stopAudio();
   floatingCardHost.innerHTML = renderCardHtml(i);
   document.getElementById('toggleUnknown').addEventListener('click', () => {
-    unknown.has(i.index) ? unknown.delete(i.index) : unknown.add(i.index);
+    const key = String(i.index);
+    const current = unknownMeta[key]?.marked;
+    unknownMeta[key] = { marked: !current, updatedAt: nowIso() };
     saveMarks();
     renderGrid();
     mountCard(i);
   });
   document.getElementById('closeCard').addEventListener('click', closeCard);
   const audioButton = floatingCardHost.querySelector('.pronounce-btn');
-  if (audioButton) audioButton.addEventListener('click', event => {
-    event.preventDefault();
-    event.stopPropagation();
-    playAudio(audioButton);
-  });
+  if (audioButton) audioButton.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); playAudio(audioButton); });
   document.getElementById('toggleUnknown').focus({preventScroll: true});
 }
-
 function openCard(i) {
   activeIndex = i.index;
   renderGrid();
@@ -336,7 +348,6 @@ function openCard(i) {
   document.body.classList.add('overlay-open');
   requestAnimationFrame(() => cardOverlay.classList.add('open'));
 }
-
 function closeCard() {
   if (!cardOverlay.classList.contains('open')) return;
   stopAudio();
@@ -344,35 +355,75 @@ function closeCard() {
   document.body.classList.remove('overlay-open');
   activeIndex = null;
   renderGrid();
-  window.setTimeout(() => {
-    if (!cardOverlay.classList.contains('open')) {
-      floatingCardHost.innerHTML = '';
-      cardOverlay.setAttribute('aria-hidden', 'true');
-    }
-  }, 260);
+  window.setTimeout(() => { if (!cardOverlay.classList.contains('open')) { floatingCardHost.innerHTML = ''; cardOverlay.setAttribute('aria-hidden', 'true'); } }, 260);
 }
-
-function selectedUnknownItems() {
-  return unit.items.filter(i => unknown.has(i.index));
-}
-
+function selectedUnknownItems() { return unit.items.filter(i => unknown.has(i.index)); }
 function csvValue(v) {
   const t = String(v ?? '');
   return /[",\n]/.test(t) ? `"${t.replaceAll('"', '""')}"` : t;
 }
-
 function buildCsv(items) {
   const header = ['unit_id', 'index', 'word', 'phonetic', 'pos', 'core_en', 'patterns', 'example_sentences'];
   const rows = items.map(i => [i.unit_id, String(i.index).padStart(3, '0'), i.word, i.phonetic, i.pos, i.core_en, i.patterns.join('; '), i.examples.map(e => e.sentence).join(' | ')]);
   return [header, ...rows].map(r => r.map(csvValue).join(',')).join('\n');
 }
-
 function buildText(items) {
   return items.map(i => {
     const ex = i.examples[0]?.sentence || '';
     return `${String(i.index).padStart(3, '0')} ${i.word}${i.pos ? ` (${i.pos})` : ''} - ${i.core_en}${ex ? ` | ${ex}` : ''}`;
   }).join('\n');
 }
+function localPayload() { return { unitId: unit.unit_id, examUnknownMarks: normalizeExamMarks(unknownMeta), examClearedAt: readLocalClearTime(), sourceClient: 'gre-static-web' }; }
+function sessionReady() { return window.greCloudbaseSession && typeof window.greCloudbaseSession.callFunction === 'function'; }
+function mergeRemoteState(remote) {
+  const incomingMarks = normalizeExamMarks(remote?.examUnknownMarks || {});
+  const localClear = readLocalClearTime();
+  const remoteClear = remote?.examClearedAt || null;
+  const nextClear = timeOf(remoteClear) > timeOf(localClear) ? remoteClear : localClear;
+  const merged = { ...unknownMeta };
+  for (const [index, incoming] of Object.entries(incomingMarks)) {
+    const current = merged[index];
+    if (!current || timeOf(incoming.updatedAt) > timeOf(current.updatedAt)) merged[index] = incoming;
+  }
+  const clearTime = timeOf(nextClear);
+  for (const [index, value] of Object.entries(merged)) if (timeOf(value.updatedAt) <= clearTime) delete merged[index];
+  unknownMeta = merged;
+  writeLocalClearTime(nextClear);
+  saveMarks({ skipCloud: true });
+}
+async function hydrateCloudState() {
+  if (!sessionReady() || cloudHydrated) return;
+  cloudHydrated = true;
+  try {
+    const data = await window.greCloudbaseSession.callFunction('getGreCoreUnitState', { unitId: unit.unit_id });
+    mergeRemoteState(data?.state || {});
+    renderGrid();
+    scheduleCloudSave(300);
+  } catch (error) {
+    lastSyncError = error;
+    console.warn('[gre sync] exam hydrate failed', error);
+  }
+}
+function scheduleCloudSave(delay = 900) {
+  if (!sessionReady()) return;
+  if (syncTimer) window.clearTimeout(syncTimer);
+  syncTimer = window.setTimeout(() => { syncTimer = null; saveCloudState(); }, delay);
+}
+async function saveCloudState() {
+  if (!sessionReady()) return;
+  try {
+    const data = await window.greCloudbaseSession.callFunction('saveGreCoreUnitState', { unitId: unit.unit_id, state: localPayload() });
+    mergeRemoteState(data?.state || {});
+    renderGrid();
+    lastSyncError = null;
+  } catch (error) {
+    lastSyncError = error;
+    console.warn('[gre sync] exam save failed', error);
+  }
+}
+window.addEventListener('gre-cloudbase-session-ready', () => hydrateCloudState());
+if (sessionReady()) hydrateCloudState();
+window.addEventListener('pagehide', () => { if (sessionReady()) saveCloudState(); });
 
 grid.addEventListener('click', e => {
   const b = e.target.closest('.word-btn');
@@ -382,11 +433,10 @@ grid.addEventListener('click', e => {
 });
 searchInput.addEventListener('input', renderGrid);
 overlayBackdrop.addEventListener('click', closeCard);
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeCard();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCard(); });
 document.getElementById('clearMarks').addEventListener('click', () => {
-  unknown = new Set();
+  unknownMeta = {};
+  writeLocalClearTime(nowIso());
   saveMarks();
   renderGrid();
   if (activeIndex) {
@@ -397,10 +447,7 @@ document.getElementById('clearMarks').addEventListener('click', () => {
 });
 document.getElementById('exportCsv').addEventListener('click', () => {
   const items = selectedUnknownItems();
-  if (!items.length) {
-    setStatus('还没有标记不会的词');
-    return;
-  }
+  if (!items.length) { setStatus('还没有标记不会的词'); return; }
   const blob = new Blob([buildCsv(items)], {type: 'text/csv;charset=utf-8'});
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
@@ -413,10 +460,7 @@ document.getElementById('exportCsv').addEventListener('click', () => {
   setStatus(`已导出 ${items.length} 个不会词`);
 });
 async function copyToClipboard(text) {
-  if (navigator.clipboard && window.isSecureContext) {
-    await navigator.clipboard.writeText(text);
-    return;
-  }
+  if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return; }
   const ta = document.createElement('textarea');
   ta.value = text;
   ta.setAttribute('readonly', '');
@@ -429,18 +473,11 @@ async function copyToClipboard(text) {
 }
 document.getElementById('copyText').addEventListener('click', async () => {
   const items = selectedUnknownItems();
-  if (!items.length) {
-    setStatus('还没有标记不会的词');
-    return;
-  }
-  try {
-    await copyToClipboard(buildText(items));
-    setStatus(`已复制 ${items.length} 个不会词`);
-  } catch (e) {
-    setStatus('复制失败，可以改用导出 CSV');
-  }
+  if (!items.length) { setStatus('还没有标记不会的词'); return; }
+  try { await copyToClipboard(buildText(items)); setStatus(`已复制 ${items.length} 个不会词`); }
+  catch(e) { setStatus('复制失败，可以改用导出 CSV'); }
 });
-saveMarks();
+saveMarks({ skipCloud: true });
 renderGrid();
 </script>
 </body>
